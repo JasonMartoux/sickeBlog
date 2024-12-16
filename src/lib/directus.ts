@@ -35,7 +35,7 @@ export async function getPages() {
     try {
         const pages = await client.request(readItems('Pages'));
         if (!pages) {
-            console.error('No data received from Directus');
+            console.error(' No data received from Directus');
             return [];
         }
         return pages.map(page => ({
@@ -43,7 +43,7 @@ export async function getPages() {
             slug: slugify(page.title)
         }));
     } catch (error) {
-        console.error('Error fetching pages:', error);
+        console.error(' Error fetching pages:', error);
         return [];
     }
 }
@@ -53,7 +53,7 @@ export async function getCategories() {
         const categories = await client.request(readItems('Categories'));
 
         if (!categories) {
-            console.error('No data received from Directus');
+            console.error(' No data received from Directus');
             return [];
         }
 
@@ -62,7 +62,7 @@ export async function getCategories() {
             slug: slugify(category.title)
         }));
     } catch (error) {
-        console.error('Error fetching categories:', error);
+        console.error(' Error fetching categories: ', error);
         return [];
     }
 }
@@ -71,7 +71,7 @@ export async function getGlobal() {
     try {
         return await client.request(readSingleton('global'));
     } catch (error) {
-        console.error('Error fetching global:', error);
+        console.error(' Error fetching global: ', error);
         return null;
     }
 }
