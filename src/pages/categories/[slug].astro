@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import { getPages } from '../../lib/directus';
 
 export async function getStaticPaths() {
-    const pages = await getPages();
+    const pages = {};
     if (!pages || pages.length === 0) {
         // Return at least one path to prevent build error
         return [{
