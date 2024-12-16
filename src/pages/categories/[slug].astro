@@ -1,6 +1,6 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { getPages } from '../lib/directus';
+import Layout from '../../layouts/Layout.astro';
+import { getPages } from '../../lib/directus';
 
 export async function getStaticPaths() {
     const pages = await getPages();
