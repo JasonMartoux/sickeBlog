@@ -4,6 +4,15 @@ import Layout from '../layouts/Layout.astro';
 import { getGlobal } from '../lib/directus';
 
 const global = await getGlobal();
+try {
+  const response = await fetch("https://admin.sickelink.com/items/Pages");
+  console.log('Fetch Response:', response.status, response.statusText);
+  const data = await response.json();
+  console.log('Data:', data);
+} catch (error) {
+  console.error('Fetch failed:', error);
+}
+
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
