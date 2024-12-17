@@ -25,15 +25,15 @@ type Category = {
 
 type Schema = {
     global: Global;
-    Categories: Category[];
-    Pages: Page[];
+    categories: Category[];
+    pages: Page[];
 };
 
 const client = createDirectus<Schema>('https://admin.sickelink.com/').with(rest());
-console.error(client);
+
 export async function getPages() {
     try {
-        const pages = await client.request(readItems('Pages'));
+        const pages = await client.request(readItems('pages'));
         if (!pages) {
             console.error(' No data received from Directus');
             return [];
@@ -50,7 +50,7 @@ export async function getPages() {
 
 export async function getCategories() {
     try {
-        const categories = await client.request(readItems('Categories'));
+        const categories = await client.request(readItems('categories'));
         if (!categories) {
             console.error(' No data received from Directus');
             return [];
@@ -68,7 +68,9 @@ export async function getCategories() {
 
 export async function getGlobal() {
     try {
-        return await client.request(readSingleton('global'));
+        const global = await client.request(readSingleton('global'));
+        console.log(global);
+        return global;
     } catch (error) {
         console.error(' Error fetching global: ', error);
         return null;
