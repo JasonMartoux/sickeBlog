@@ -33,7 +33,7 @@ const client = createDirectus<Schema>('https://admin.sickelink.com/').with(rest(
 
 export async function getPages() {
     try {
-        const pages = await client.request(readItems('pages'));
+        const pages = await client.request(readItems('Pages'));
         if (!pages) {
             console.error(' No data received from Directus');
             return [];
@@ -50,7 +50,7 @@ export async function getPages() {
 
 export async function getCategories() {
     try {
-        const categories = await client.request(readItems('categories'));
+        const categories = await client.request(readItems('Categories'));
         if (!categories) {
             console.error(' No data received from Directus');
             return [];
@@ -69,7 +69,6 @@ export async function getCategories() {
 export async function getGlobal() {
     try {
         const global = await client.request(readSingleton('global'));
-        console.log(global);
         return global;
     } catch (error) {
         console.error(' Error fetching global: ', error);
