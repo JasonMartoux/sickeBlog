@@ -1,0 +1,26 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import  client, { getCategories } from '../../lib/directus';
+import { slugify } from '../../utils/slugify';
+
+export async function getStaticPaths() {
+    const categories = await getCategories();
+
+    categories.map(category => ({
+            ...category,
+            slug: slugify(category.title)
+        }))
+    return categories.map((category) => ({
+        params: { slug: category.slug },
+        props: category,
+    }));
+}
+
+const category  = Astro.props;
+---
+
+<Layout title={category.title}>
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold mb-6">{category.title}</h1>
+
+    </main>

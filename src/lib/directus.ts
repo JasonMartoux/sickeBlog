@@ -30,7 +30,7 @@ type Schema = {
 };
 
 const client = createDirectus<Schema>('https://admin.sickelink.com/').with(rest());
-
+console.error(client);
 export async function getPages() {
     try {
         const pages = await client.request(readItems('Pages'));
@@ -51,7 +51,6 @@ export async function getPages() {
 export async function getCategories() {
     try {
         const categories = await client.request(readItems('Categories'));
-
         if (!categories) {
             console.error(' No data received from Directus');
             return [];
