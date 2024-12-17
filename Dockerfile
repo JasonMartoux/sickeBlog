@@ -11,7 +11,7 @@ COPY . .
 RUN npm install
 
 # Exposer le port utilisé par le mode dev d'Astro (par défaut 3000)
-EXPOSE 3000
+EXPOSE 4321
 
 # Commande par défaut pour démarrer le mode dev
 CMD ["npm", "run", "dev"]
